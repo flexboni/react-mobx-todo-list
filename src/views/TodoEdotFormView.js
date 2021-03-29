@@ -1,6 +1,6 @@
 import 'date-fns';
 import React, { PureComponent } from 'react';
-import { TextField, Grid, Button, Box } from '@material-ui/core';
+import { TextField, Grid, Button } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
@@ -12,8 +12,8 @@ import {
 
 class TodoEditFormView extends PureComponent {
   render() {
-    const { todo } = this.props;
-    const selectedDate = new Date();
+    const { todo, onSetTodoProps } = this.props;
+    // const selectedDate = new Date();
 
     return (
       <form noValidate>
@@ -24,7 +24,8 @@ class TodoEditFormView extends PureComponent {
               id='outlined-basic'
               label='Title'
               variant='standard'
-              value={todo.title}
+              value={todo && todo.title ? todo.title : ''}
+              onChange={event => onSetTodoProps('title', event.target.value)}
             />
           </Grid>
           <Grid item xs={3}>
@@ -34,8 +35,8 @@ class TodoEditFormView extends PureComponent {
                 id='date-picker-dialog'
                 label='Date'
                 format='yyyy-MM-dd'
-                value={selectedDate}
-                // onChange={handleDateChange}
+                value={todo && todo.date ? todo.date : null}
+                onChange={date => onSetTodoProps('date', date.valueOf())}
                 KeyboardButtonProps={{
                   'aria-label': 'change date',
                 }}
