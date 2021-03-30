@@ -12,7 +12,13 @@ import {
 
 class TodoEditFormView extends PureComponent {
   render() {
-    const { todo, onSetTodoProps, onAddTodo } = this.props;
+    const {
+      todo,
+      onSetTodoProps,
+      onAddTodo,
+      onUpdateTodo,
+      onDeleteTodo,
+    } = this.props;
     // const selectedDate = new Date();
 
     return (
@@ -57,6 +63,7 @@ class TodoEditFormView extends PureComponent {
           <Button
             variant='contained'
             color='default'
+            onClick={onUpdateTodo}
             startIcon={<UpdateIcon />}
           >
             Update
@@ -65,6 +72,7 @@ class TodoEditFormView extends PureComponent {
           <Button
             variant='contained'
             color='secondary'
+            onClick={onDeleteTodo}
             startIcon={<DeleteIcon />}
           >
             Delete

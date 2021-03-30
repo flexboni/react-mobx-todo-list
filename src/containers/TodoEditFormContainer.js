@@ -19,6 +19,14 @@ class TodoEditFormContainer extends PureComponent {
     this.props.todoStore.addTodo(todo);
   }
 
+  onUpdateTodo() {
+    this.props.todoStore.updateTodo();
+  }
+
+  onDeleteTodo() {
+    this.props.todoStore.deleteTodo();
+  }
+
   render() {
     const { todoStore } = this.props;
 
@@ -27,6 +35,8 @@ class TodoEditFormContainer extends PureComponent {
         todo={todoStore.todo}
         onSetTodoProps={this.onSetTodoProps}
         onAddTodo={this.onAddTodo}
+        onUpdateTodo={this.onUpdateTodo}
+        onDeleteTodo={this.onDeleteTodo}
       />
     );
   }
